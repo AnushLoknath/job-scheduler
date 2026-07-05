@@ -18,34 +18,42 @@
             --accent: #D97706;        /* Amber for alerts */
         }
 
+        /* Base settings to enforce A4 size and layout in browser and print */
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
             padding: 0;
             background-color: #F3F4F6;
         }
 
-        /* Printable Page Layout */
+        /* A4 Page container layout */
         .page {
             width: 210mm;
-            min-height: 297mm;
-            padding: 25mm 20mm;
-            margin: 20px auto;
+            height: 297mm;
+            padding: 16mm 20mm;
+            margin: 10mm auto;
             background: #ffffff;
-            box-sizing: border-box;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             page-break-after: always;
+            break-after: page;
         }
 
-        /* Cover Page styling */
+        /* Cover Page Styling */
         .cover-page {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 247mm; /* Adjust for A4 height minus padding */
+            height: 100%;
         }
 
         .cover-graphics {
@@ -58,7 +66,7 @@
         }
 
         .cover-header {
-            margin-top: 60mm;
+            margin-top: 55mm;
             text-align: center;
         }
 
@@ -82,7 +90,7 @@
         }
 
         .cover-author {
-            margin-top: 30mm;
+            margin-top: 25mm;
             text-align: center;
         }
 
@@ -112,10 +120,10 @@
         }
 
         .cover-footer {
-            margin-bottom: 10mm;
+            margin-bottom: 5mm;
             border-top: 1px solid var(--border);
             padding-top: 20px;
-            font-size: 11pt;
+            font-size: 10pt;
         }
 
         .footer-grid {
@@ -132,113 +140,121 @@
         h1, h2, h3, h4 {
             color: var(--primary);
             font-weight: 600;
+            margin-top: 0;
             page-break-after: avoid;
+            break-after: avoid;
         }
 
         h1 {
-            font-size: 20pt;
+            font-size: 18pt;
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 8px;
-            margin-top: 0;
-            margin-bottom: 20px;
+            padding-bottom: 6px;
+            margin-bottom: 15px;
         }
 
         h2 {
-            font-size: 14pt;
+            font-size: 13pt;
             color: var(--secondary);
-            margin-top: 25px;
-            margin-bottom: 12px;
+            margin-top: 20px;
+            margin-bottom: 10px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
 
         h3 {
-            font-size: 12pt;
-            margin-top: 20px;
-            margin-bottom: 8px;
+            font-size: 11pt;
+            margin-top: 15px;
+            margin-bottom: 6px;
         }
 
         p, li {
-            font-size: 10.5pt;
+            font-size: 10pt;
             color: var(--text-main);
             text-align: justify;
+            margin-top: 0;
+            margin-bottom: 8px;
         }
 
         ul, ol {
-            margin-top: 5px;
+            margin-top: 0;
+            margin-bottom: 10px;
             padding-left: 20px;
         }
 
         li {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 9.5pt;
+            margin: 10px 0 15px 0;
+            font-size: 9pt;
             page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         th, td {
             border: 1px solid var(--border);
-            padding: 8px 12px;
+            padding: 6px 10px;
             text-align: left;
+            vertical-align: middle;
         }
 
         th {
-            background-color: var(--primary);
-            color: #ffffff;
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
             font-weight: 600;
         }
 
         tr:nth-child(even) {
-            background-color: var(--bg-light);
+            background-color: var(--bg-light) !important;
         }
 
+        /* Badges */
         .badge {
             display: inline-block;
-            padding: 2px 6px;
-            font-size: 8pt;
+            padding: 1px 5px;
+            font-size: 7.5pt;
             font-weight: 600;
             border-radius: 4px;
             text-transform: uppercase;
         }
 
-        .badge-get { background-color: #E0F2FE; color: #0369A1; }
-        .badge-post { background-color: #DCFCE7; color: #15803D; }
-        .badge-patch { background-color: #FEF3C7; color: #B45309; }
-        .badge-delete { background-color: #FEE2E2; color: #B91C1C; }
+        .badge-get { background-color: #E0F2FE !important; color: #0369A1 !important; }
+        .badge-post { background-color: #DCFCE7 !important; color: #15803D !important; }
+        .badge-patch { background-color: #FEF3C7 !important; color: #B45309 !important; }
+        .badge-delete { background-color: #FEE2E2 !important; color: #B91C1C !important; }
         
-        .badge-pk { background-color: #EEF2F6; color: #1E3A8A; border: 1px solid #CBD5E1; }
-        .badge-fk { background-color: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0; }
+        .badge-pk { background-color: #EEF2F6 !important; color: #1E3A8A !important; border: 1px solid #CBD5E1; }
+        .badge-fk { background-color: #F0FDF4 !important; color: #15803D !important; border: 1px solid #BBF7D0; }
 
         /* Code blocks */
         code {
             font-family: 'Fira Code', monospace;
-            font-size: 9pt;
-            background-color: var(--code-bg);
-            padding: 2px 4px;
-            border-radius: 4px;
+            font-size: 8.5pt;
+            background-color: var(--code-bg) !important;
+            padding: 1px 3px;
+            border-radius: 3px;
         }
 
         pre {
-            background-color: var(--bg-light);
+            background-color: var(--bg-light) !important;
             border: 1px solid var(--border);
             border-left: 4px solid var(--secondary);
-            padding: 12px;
-            overflow-x: auto;
+            padding: 10px;
+            overflow: hidden;
             border-radius: 4px;
-            margin: 15px 0;
+            margin: 10px 0;
             page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         pre code {
-            background-color: transparent;
+            background-color: transparent !important;
             padding: 0;
-            font-size: 8.5pt;
+            font-size: 8pt;
         }
 
         /* SVG Architecture layout */
@@ -246,58 +262,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 20px 0;
-            background-color: var(--bg-light);
+            margin: 15px 0;
+            background-color: var(--bg-light) !important;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 15px;
-            page-break-inside: avoid;
-        }
-
-        /* Grid layouts for comparisons */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .comparison-card {
-            border: 1px solid var(--border);
-            border-radius: 6px;
             padding: 12px;
-            background-color: var(--bg-light);
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
-        .comparison-card h4 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            color: var(--secondary);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 4px;
-        }
-
-        /* Print Optimizations */
-        @media print {
-            body {
-                background-color: #ffffff;
-            }
-            .page {
-                margin: 0;
-                border: none;
-                box-shadow: none;
-                width: 100%;
-                height: 100%;
-                min-height: 297mm;
-                page-break-after: always;
-                box-sizing: border-box;
-            }
-            .no-print-btn {
-                display: none;
-            }
-        }
-
-        /* Floating print action button (UI only) */
+        /* Print Button Floating (UI Only) */
         .no-print-btn {
             position: fixed;
             top: 20px;
@@ -314,8 +288,46 @@
             z-index: 1000;
             transition: background-color 0.2s;
         }
+        
         .no-print-btn:hover {
             background-color: var(--primary);
+        }
+
+        /* Page specific content overflow limits */
+        .page-content-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Explicit @page and print layout overrides */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: none !important;
+                background-color: #ffffff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .page {
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+            }
+            .no-print-btn {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -375,537 +387,592 @@
 
     <!-- PAGE 2: PROJECT OVERVIEW -->
     <div class="page">
-        <h1>1. Project Overview</h1>
-        <p>
-            The <strong>Distributed Job Scheduler</strong> is a production-grade, multi-tenant backend platform designed for scheduling, queuing, executing, and observing background jobs at scale. Built with a lightweight yet high-concurrency architecture, it enables organizations to submit immediate, delayed, and recurring (cron-based) jobs, distributing that workload dynamically across a cluster of self-registering worker processes. The status of queues, heartbeats, and worker loads is observable in real-time through an interactive front-end dashboard.
-        </p>
-        <p>
-            Rather than relying on resource-intensive message broker daemons, the system is engineered around a **Single-Source-of-Truth Database Architecture**. It utilizes **SQLite in Write-Ahead Log (WAL) mode** to maintain high-performance transactional isolation, coordinating task claiming and locking operations across multiple concurrent background worker nodes natively.
-        </p>
+        <div class="page-content-wrapper">
+            <h1>1. Project Overview</h1>
+            <p>
+                The <strong>Distributed Job Scheduler</strong> is a production-grade, multi-tenant backend platform designed for scheduling, queuing, executing, and observing background jobs at scale. Built with a lightweight yet high-concurrency architecture, it enables organizations to submit immediate, delayed, and recurring (cron-based) jobs, distributing that workload dynamically across a cluster of self-registering worker processes. The status of queues, heartbeats, and worker loads is observable in real-time through an interactive front-end dashboard.
+            </p>
+            <p>
+                Rather than relying on resource-intensive message broker daemons, the system is engineered around a **Single-Source-of-Truth Database Architecture**. It utilizes **SQLite in Write-Ahead Log (WAL) mode** to maintain high-performance transactional isolation, coordinating task claiming and locking operations across multiple concurrent background worker nodes natively.
+            </p>
 
-        <h2>1.1 Core Capabilities</h2>
-        <ul>
-            <li><strong>Multi-Tenant Hierarchy</strong>: Structures workflows logically under Organizations and Projects, protected by a comprehensive Role-Based Access Control (RBAC) layer supporting Owner, Admin, and Member permissions.</li>
-            <li><strong>Queue Management</strong>: Offers fine-grained controls with configurable execution priority weights, queue-specific concurrency limits, and dynamic pause/resume toggles.</li>
-            <li><strong>Robust Job Lifecycle</strong>: Explicit tracking of job states: <code>queued</code>, <code>scheduled</code>, <code>claimed</code>, <code>running</code>, <code>completed</code>, <code>failed</code>, and <code>cancelled</code>.</li>
-            <li><strong>Flexible Scheduling Profiles</strong>: Accommodates immediate triggers, epoch-timestamped delayed executions, and cron-expression calendars.</li>
-            <li><strong>Decoupled Retry Policies</strong>: Reusable retry strategies (fixed, linear, and exponential backoff configurations) linked directly to queues or overridden at the individual job level.</li>
-            <li><strong>Dead-Letter Queue (DLQ)</strong>: Automatically isolates jobs that exhaust their maximum attempts, capturing failure reasons and payloads to facilitate manual analysis or replay operations.</li>
-            <li><strong>Distributed Worker Pool</strong>: Autonomous background threads that periodically send heartbeat indicators (active job count, concurrency capacity) and atomically claim jobs to guarantee at-most-once/at-least-once task distribution.</li>
-            <li><strong>Real-Time Observation Stream</strong>: Implements Server-Sent Events (SSE) to broadcast system state transitions and worker heartbeat statistics to the React dashboard instantly.</li>
-        </ul>
+            <h2>1.1 Core Capabilities</h2>
+            <ul>
+                <li><strong>Multi-Tenant Hierarchy</strong>: Structures workflows logically under Organizations and Projects, protected by a comprehensive Role-Based Access Control (RBAC) layer supporting Owner, Admin, and Member permissions.</li>
+                <li><strong>Queue Management</strong>: Offers fine-grained controls with configurable execution priority weights, queue-specific concurrency limits, and dynamic pause/resume toggles.</li>
+                <li><strong>Robust Job Lifecycle</strong>: Explicit tracking of job states: <code>queued</code>, <code>scheduled</code>, <code>claimed</code>, <code>running</code>, <code>completed</code>, <code>failed</code>, and <code>cancelled</code>.</li>
+                <li><strong>Flexible Scheduling Profiles</strong>: Accommodates immediate triggers, epoch-timestamped delayed executions, and cron-expression calendars.</li>
+                <li><strong>Decoupled Retry Policies</strong>: Reusable retry strategies (fixed, linear, and exponential backoff configurations) linked directly to queues or overridden at the individual job level.</li>
+                <li><strong>Dead-Letter Queue (DLQ)</strong>: Automatically isolates jobs that exhaust their maximum attempts, capturing failure reasons and payloads to facilitate manual analysis or replay operations.</li>
+                <li><strong>Distributed Worker Pool</strong>: Autonomous background threads that periodically send heartbeat indicators (active job count, concurrency capacity) and atomically claim jobs to guarantee at-most-once/at-least-once task distribution.</li>
+                <li><strong>Real-Time Observation Stream</strong>: Implements Server-Sent Events (SSE) to broadcast system state transitions and worker heartbeat statistics to the React dashboard instantly.</li>
+            </ul>
+        </div>
     </div>
 
 
     <!-- PAGE 3: SYSTEM ARCHITECTURE -->
     <div class="page">
-        <h1>2. System Architecture</h1>
-        <p>
-            The system employs a decoupled, three-tier architecture: the <strong>Presentation Layer</strong> (Vite React), the <strong>API & Processing Layer</strong> (Express Server and Worker Pool), and the <strong>Storage Layer</strong> (SQLite WAL).
-        </p>
-        
-        <div class="diagram-container">
-            <!-- Native SVG System Architecture Diagram -->
-            <svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border-radius: 4px;">
-                <!-- Layers -->
-                <rect x="10" y="10" width="160" height="280" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                <text x="90" y="28" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">FRONTEND LAYER</text>
+        <div class="page-content-wrapper">
+            <h1>2. System Architecture</h1>
+            <p>
+                The system employs a decoupled, three-tier architecture: the <strong>Presentation Layer</strong> (Vite React), the <strong>API & Processing Layer</strong> (Express Server and Worker Pool), and the <strong>Storage Layer</strong> (SQLite WAL).
+            </p>
+            
+            <div class="diagram-container">
+                <svg width="580" height="230" viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border-radius: 4px;">
+                    <!-- Layers -->
+                    <rect x="10" y="10" width="160" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
+                    <text x="90" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">FRONTEND LAYER</text>
 
-                <rect x="190" y="10" width="200" height="280" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                <text x="290" y="28" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">API & RUNTIME LAYER</text>
+                    <rect x="190" y="10" width="200" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
+                    <text x="290" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">API & RUNTIME LAYER</text>
 
-                <rect x="410" y="10" width="180" height="280" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                <text x="500" y="28" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">STORAGE LAYER</text>
+                    <rect x="410" y="10" width="180" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
+                    <text x="500" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">STORAGE LAYER</text>
 
-                <!-- Components -->
-                <!-- React Dashboard -->
-                <rect x="25" y="80" width="130" height="120" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" />
-                <text x="90" y="120" font-size="11" fill="#0369A1" font-weight="bold" text-anchor="middle">Vite React</text>
-                <text x="90" y="140" font-size="9" fill="#0369A1" text-anchor="middle">Monitoring Dashboard</text>
-                <text x="90" y="155" font-size="8" fill="#64748B" text-anchor="middle">(Live Charts & Logs)</text>
+                    <!-- Components -->
+                    <rect x="25" y="70" width="130" height="100" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" />
+                    <text x="90" y="105" font-size="11" fill="#0369A1" font-weight="bold" text-anchor="middle">Vite React</text>
+                    <text x="90" y="125" font-size="9" fill="#0369A1" text-anchor="middle">Monitoring Dashboard</text>
+                    <text x="90" y="140" font-size="8" fill="#64748B" text-anchor="middle">(Live Charts & Logs)</text>
 
-                <!-- Express Server -->
-                <rect x="205" y="50" width="170" height="80" rx="4" fill="#EEF2F6" stroke="#1E3A8A" stroke-width="1.5" />
-                <text x="290" y="80" font-size="11" fill="#1E3A8A" font-weight="bold" text-anchor="middle">Express API Server</text>
-                <text x="290" y="100" font-size="8.5" fill="#374151" text-anchor="middle">REST APIs + SSE Broadcaster</text>
+                    <rect x="205" y="45" width="170" height="70" rx="4" fill="#EEF2F6" stroke="#1E3A8A" stroke-width="1.5" />
+                    <text x="290" y="72" font-size="11" fill="#1E3A8A" font-weight="bold" text-anchor="middle">Express API Server</text>
+                    <text x="290" y="90" font-size="8.5" fill="#374151" text-anchor="middle">REST APIs + SSE Broadcaster</text>
 
-                <!-- Worker Nodes -->
-                <rect x="205" y="165" width="170" height="110" rx="4" fill="#E2F2F0" stroke="#0F766E" stroke-width="1.5" />
-                <text x="290" y="188" font-size="11" fill="#0F766E" font-weight="bold" text-anchor="middle">Worker Daemon Pool</text>
-                <text x="290" y="208" font-size="8.5" fill="#374151" text-anchor="middle">Concurrency Claim Loop</text>
-                <text x="290" y="228" font-size="8" fill="#64748B" text-anchor="middle">(5 concurrent slots per node)</text>
+                    <rect x="205" y="145" width="170" height="75" rx="4" fill="#E2F2F0" stroke="#0F766E" stroke-width="1.5" />
+                    <text x="290" y="168" font-size="11" fill="#0F766E" font-weight="bold" text-anchor="middle">Worker Daemon Pool</text>
+                    <text x="290" y="185" font-size="8.5" fill="#374151" text-anchor="middle">Concurrency Claim Loop</text>
+                    <text x="290" y="200" font-size="8" fill="#64748B" text-anchor="middle">(5 concurrent slots per node)</text>
 
-                <!-- SQLite DB -->
-                <rect x="430" y="90" width="140" height="110" rx="4" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.5" />
-                <text x="500" y="130" font-size="11" fill="#B91C1C" font-weight="bold" text-anchor="middle">SQLite WAL DB</text>
-                <text x="500" y="150" font-size="8.5" fill="#374151" text-anchor="middle">(database.sqlite)</text>
-                <text x="500" y="165" font-size="8" fill="#64748B" text-anchor="middle">Atomic Locking & States</text>
+                    <rect x="430" y="70" width="140" height="100" rx="4" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.5" />
+                    <text x="500" y="105" font-size="11" fill="#B91C1C" font-weight="bold" text-anchor="middle">SQLite WAL DB</text>
+                    <text x="500" y="125" font-size="8.5" fill="#374151" text-anchor="middle">(database.sqlite)</text>
+                    <text x="500" y="140" font-size="8" fill="#64748B" text-anchor="middle">Atomic Locking & States</text>
 
-                <!-- Connection Lines -->
-                <!-- React to Express -->
-                <path d="M 155 100 L 205 100" stroke="#0284C7" stroke-width="1" fill="none" marker-end="url(#arrow)" />
-                <text x="180" y="95" font-size="7" fill="#0284C7" text-anchor="middle">REST</text>
+                    <!-- Connection Lines -->
+                    <path d="M 155 90 L 205 90" stroke="#0284C7" stroke-width="1" fill="none" />
+                    <text x="180" y="85" font-size="7" fill="#0284C7" text-anchor="middle">REST</text>
 
-                <path d="M 205 115 L 155 115" stroke="#0F766E" stroke-width="1" fill="none" />
-                <text x="180" y="125" font-size="7" fill="#0F766E" text-anchor="middle">SSE Stream</text>
+                    <path d="M 205 105 L 155 105" stroke="#0F766E" stroke-width="1" fill="none" />
+                    <text x="180" y="115" font-size="7" fill="#0F766E" text-anchor="middle">SSE Stream</text>
 
-                <!-- Express to DB -->
-                <path d="M 375 90 L 430 110" stroke="#1E3A8A" stroke-width="1" fill="none" />
-                <text x="402" y="95" font-size="7" fill="#1E3A8A" text-anchor="middle">Read/Write</text>
+                    <path d="M 375 80 L 430 95" stroke="#1E3A8A" stroke-width="1" fill="none" />
+                    <text x="402" y="83" font-size="7" fill="#1E3A8A" text-anchor="middle">Read/Write</text>
 
-                <!-- Workers to DB -->
-                <path d="M 375 220 L 430 180" stroke="#0F766E" stroke-width="1" fill="none" />
-                <text x="402" y="212" font-size="7" fill="#0F766E" text-anchor="middle">Atomic Claims</text>
-            </svg>
+                    <path d="M 375 180 L 430 145" stroke="#0F766E" stroke-width="1" fill="none" />
+                    <text x="402" y="170" font-size="7" fill="#0F766E" text-anchor="middle">Atomic Claims</text>
+                </svg>
+            </div>
+
+            <h2>2.1 Data &amp; Dispatch Flow</h2>
+            <p>
+                When a client posts a job, the Express API stores it in the SQLite database in a <code>queued</code> state. Concurrently, active background worker threads query the database at regular intervals. Utilizing SQL Transactions, a worker atomically queries for eligible pending jobs, verifies queue-level concurrency limits, ensures no sibling or parent dependencies are blocked, and marks the selected job as <code>claimed</code>. Once claimed, the worker changes the status to <code>running</code>, executes the target business logic, logs attempts, and transitions the state to either <code>completed</code> or <code>failed</code>. In case of failure, retry offsets are calculated based on the active Retry Policy, and the job is rescheduled.
+            </p>
         </div>
-
-        <h2>2.1 Components</h2>
-        <ul>
-            <li><strong>Vite React Dashboard</strong>: A responsive UI rendering job metrics (active, queued, failed, completed counts), live worker heartbeats, and paginated logs. Connects to the Express SSE endpoint for immediate reactive updates without polling.</li>
-            <li><strong>Express API Server</strong>: Serving client API requests. Validates parameters, executes database state mutations (submitting jobs, updating projects/queues/policies), manages authentication tokens via JWT, and exposes an HTTP SSE connection to push updates down.</li>
-            <li><strong>Background Worker Pool</strong>: Multi-process instance nodes running continuous claim-execute loops. Nodes execute jobs inside thread pools limiting local thread consumption while periodically posting diagnostic data (concurrency, load) back into the central database.</li>
-        </ul>
-
-        <h2>2.2 Data &amp; Dispatch Flow</h2>
-        <p>
-            When a client posts a job, the Express API stores it in the SQLite database in a <code>queued</code> state. Concurrently, active background worker threads query the database at regular intervals. Utilizing SQL Transactions, a worker atomically queries for eligible pending jobs, verifies queue-level concurrency limits, ensures no sibling or parent dependencies are blocked, and marks the selected job as <code>claimed</code>. Once claimed, the worker changes the status to <code>running</code>, executes the target business logic, logs attempts, and transitions the state to either <code>completed</code> or <code>failed</code>. In case of failure, retry offsets are calculated based on the active Retry Policy, and the job is rescheduled.
-        </p>
     </div>
 
 
-    <!-- PAGE 4: DATABASE DESIGN -->
+    <!-- PAGE 4: ARCHITECTURE COMPONENTS -->
     <div class="page">
-        <h1>3. Database Design — Schema Layout</h1>
-        <p>
-            The system relies on a fully normalized SQLite schema structure. Concurrency and consistency are guaranteed through foreign keys and WAL mode.
-        </p>
+        <div class="page-content-wrapper">
+            <h1>2.2 Architecture Components</h1>
+            <p>
+                The platform is designed around autonomous components that interact with the SQLite file concurrently. This separation of concerns ensures both API responsiveness and worker isolation.
+            </p>
 
-        <h3>Core Database Tables</h3>
+            <h3>1. Vite React Dashboard</h3>
+            <p>
+                The frontend is a lightweight Single Page Application (SPA) designed to present metrics and logs in real-time. Key visual telemetry is established immediately after mounting via a persistent Server-Sent Events (SSE) channel. This eliminates HTTP polling overhead, enabling the charts, execution stats, and worker logs to sync instantaneously whenever state transitions occur on the backend database.
+            </p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Table Name</th>
-                    <th>Primary Key</th>
-                    <th>Foreign Keys</th>
-                    <th>Core Fields &amp; Schema Purpose</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>users</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td>-</td>
-                    <td>Stores user details: <code>username</code>, <code>email</code>, and bcrypt <code>password_hash</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>organizations</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td>-</td>
-                    <td>Represents the highest level tenant bucket.</td>
-                </tr>
-                <tr>
-                    <td><code>organization_members</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">user_id, organization_id</span></td>
-                    <td>Maps users to organizations with a security <code>role</code> (Owner, Member).</td>
-                </tr>
-                <tr>
-                    <td><code>projects</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">organization_id</span></td>
-                    <td>Namespaced isolation boundary within an organization.</td>
-                </tr>
-                <tr>
-                    <td><code>retry_policies</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">project_id</span></td>
-                    <td>Custom configs for backoffs: <code>strategy</code> (fixed, linear, exponential), <code>delay_ms</code>, <code>max_retries</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>queues</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">project_id, retry_policy_id</span></td>
-                    <td>Holds queue limits: <code>priority</code>, <code>concurrency_limit</code>, and pause flag <code>is_paused</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>batches</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">project_id</span></td>
-                    <td>Aggregates multiple jobs: track <code>total_jobs</code>, <code>completed_jobs</code>, <code>failed_jobs</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>workers</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td>-</td>
-                    <td>Tracks worker status: <code>hostname</code>, <code>status</code> (active, offline), <code>concurrency_limit</code>, <code>last_heartbeat</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>jobs</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">queue_id, batch_id, retry_policy_id, worker_id</span></td>
-                    <td>The core task record: <code>status</code>, <code>payload</code> (JSON text), execution timing <code>run_at</code>, cron expressions.</td>
-                </tr>
-                <tr>
-                    <td><code>job_executions</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">job_id</span></td>
-                    <td>Maintains execution run history: <code>attempt_number</code>, <code>status</code>, <code>error_message</code>, <code>duration_ms</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>job_dependencies</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">parent_job_id, child_job_id</span></td>
-                    <td>Models Directed Acyclic Graphs (DAG) for chaining parent and child tasks.</td>
-                </tr>
-                <tr>
-                    <td><code>job_logs</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">job_id</span></td>
-                    <td>Detailed logging strings: <code>level</code> (info, warn, error), <code>message</code>, and <code>timestamp</code>.</td>
-                </tr>
-                <tr>
-                    <td><code>dead_letter_queue</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">queue_id</span></td>
-                    <td>Isolates failed jobs exceeding maximum retries: records original payloads and errors.</td>
-                </tr>
-                <tr>
-                    <td><code>worker_heartbeats</code></td>
-                    <td><span class="badge badge-pk">id</span></td>
-                    <td><span class="badge badge-fk">worker_id</span></td>
-                    <td>Saves time-series history of active jobs and loads for dashboard graph generation.</td>
-                </tr>
-            </tbody>
-        </table>
+            <h3>2. Express REST Server</h3>
+            <p>
+                The server functions as the administrative and ingest portal. All requests validate credentials and payload schemas at the API boundaries. It handles authentication (JWT generation), CRUD operations on projects, queues, and retry policies, and writes submitted tasks directly to the <code>jobs</code> table. The server also implements a token-bucket rate limiter to protect task dispatch routes under load.
+            </p>
+
+            <h3>3. Background Worker Daemon Pool</h3>
+            <p>
+                Workers are self-contained polling processes. Each worker daemon auto-registers on startup, reporting hostname and concurrency capabilities. It executes an infinite run loop, checking for jobs matching priority filters. Execution runs on isolated threads, updating state logs as each script begins or ends. Regularly emitted worker heartbeats are monitored to ensure system execution nodes are healthy.
+            </p>
+        </div>
     </div>
 
 
-    <!-- PAGE 5: API DOCUMENTATION PART 1 -->
+    <!-- PAGE 5: DATABASE DESIGN PART 1 -->
     <div class="page">
-        <h1>4. API Documentation</h1>
-        <p>
-            All endpoints are exposed under the base path <code>/api</code>. Authenticated endpoints require a Bearer token in the <code>Authorization</code> header (<code>Authorization: Bearer &lt;JWT_TOKEN&gt;</code>).
-        </p>
+        <div class="page-content-wrapper">
+            <h1>3. Database Design — Schema Layout</h1>
+            <p>
+                The system relies on a fully normalized SQLite schema structure. Concurrency and consistency are guaranteed through foreign keys and WAL mode. The schema is organized into tenant, configuration, and execution layers.
+            </p>
 
-        <h2>4.1 Authentication Endpoints</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Authorization</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/auth/register</code></td>
-                    <td>None</td>
-                    <td>Registers a new user and sets up baseline user schemas.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/auth/login</code></td>
-                    <td>None</td>
-                    <td>Authenticates credentials; returns a JSON Web Token (JWT).</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/auth/me</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Fetches the profile details of the current authenticated user.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>4.2 Projects &amp; Tenant Configuration</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Authorization</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/projects</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Lists all projects in the user's organization scope.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/projects</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Creates a new project namespace inside the organization.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>4.3 Queue Management</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Authorization</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/queues</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Lists all active task queues.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/queues</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Defines a new queue with explicit concurrency limits and priorities.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-patch">PATCH</span></td>
-                    <td><code>/api/queues/:id</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Updates queue configuration attributes (e.g., toggles <code>is_paused</code>).</td>
-                </tr>
-            </tbody>
-        </table>
+            <h2>3.1 Core Tenant &amp; Configuration Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table Name</th>
+                        <th>Primary Key</th>
+                        <th>Foreign Keys</th>
+                        <th>Core Fields &amp; Schema Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>users</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td>-</td>
+                        <td>Stores user details: <code>username</code>, <code>email</code>, and bcrypt <code>password_hash</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>organizations</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td>-</td>
+                        <td>Represents the highest level tenant bucket.</td>
+                    </tr>
+                    <tr>
+                        <td><code>organization_members</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">user_id, organization_id</span></td>
+                        <td>Maps users to organizations with a security <code>role</code> (Owner, Member).</td>
+                    </tr>
+                    <tr>
+                        <td><code>projects</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">organization_id</span></td>
+                        <td>Namespaced isolation boundary within an organization.</td>
+                    </tr>
+                    <tr>
+                        <td><code>retry_policies</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">project_id</span></td>
+                        <td>Custom configs for backoffs: <code>strategy</code> (fixed, linear, exponential), <code>delay_ms</code>, <code>max_retries</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>queues</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">project_id, retry_policy_id</span></td>
+                        <td>Holds queue limits: <code>priority</code>, <code>concurrency_limit</code>, and pause flag <code>is_paused</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>batches</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">project_id</span></td>
+                        <td>Aggregates multiple jobs: tracks <code>total_jobs</code>, <code>completed_jobs</code>, <code>failed_jobs</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
-    <!-- PAGE 6: API DOCUMENTATION PART 2 -->
+    <!-- PAGE 6: DATABASE DESIGN PART 2 -->
     <div class="page">
-        <h1>4. API Documentation (Continued)</h1>
+        <div class="page-content-wrapper">
+            <h1>3. Database Design (Continued)</h1>
+            
+            <h2>3.2 Runtime &amp; Telemetry Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table Name</th>
+                        <th>Primary Key</th>
+                        <th>Foreign Keys</th>
+                        <th>Core Fields &amp; Schema Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>workers</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td>-</td>
+                        <td>Tracks worker status: <code>hostname</code>, <code>status</code> (active, offline), <code>concurrency_limit</code>, <code>last_heartbeat</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>jobs</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">queue_id, batch_id, retry_policy_id, worker_id</span></td>
+                        <td>The core task record: <code>status</code>, <code>payload</code> (JSON text), execution timing <code>run_at</code>, cron expressions.</td>
+                    </tr>
+                    <tr>
+                        <td><code>job_executions</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">job_id</span></td>
+                        <td>Maintains execution run history: <code>attempt_number</code>, <code>status</code>, <code>error_message</code>, <code>duration_ms</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>job_dependencies</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">parent_job_id, child_job_id</span></td>
+                        <td>Models Directed Acyclic Graphs (DAG) for chaining parent and child tasks.</td>
+                    </tr>
+                    <tr>
+                        <td><code>job_logs</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">job_id</span></td>
+                        <td>Detailed logging strings: <code>level</code> (info, warn, error), <code>message</code>, and <code>timestamp</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>dead_letter_queue</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">queue_id</span></td>
+                        <td>Isolates failed jobs exceeding maximum retries: records original payloads and errors.</td>
+                    </tr>
+                    <tr>
+                        <td><code>worker_heartbeats</code></td>
+                        <td><span class="badge badge-pk">id</span></td>
+                        <td><span class="badge badge-fk">worker_id</span></td>
+                        <td>Saves time-series history of active jobs and loads for dashboard graph generation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <h2>4.4 Jobs &amp; Scheduling</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Authorization</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/jobs</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Queries list of jobs with filters (queue, status, project).</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/jobs/:id</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Returns details, historical executions, and log entries of a job.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/jobs</code></td>
-                    <td>Bearer JWT (Rate Limited)</td>
-                    <td>Enqueues a new job immediately or schedules it for the future.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/jobs/batch</code></td>
-                    <td>Bearer JWT (Rate Limited)</td>
-                    <td>Enqueues a collection of jobs grouped under a single batch ID.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/jobs/:id/retry</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Manually forces execution retry for a failed or DLQ job.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/jobs/:id/cancel</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Cancels a pending queued or scheduled recurring execution.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/jobs/:id/ai-summary</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Returns an LLM summary of job failure logs and debugging info.</td>
-                </tr>
-            </tbody>
-        </table>
 
-        <h2>4.5 Retry Policy &amp; Real-Time SSE Streams</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Method</th>
-                    <th>Endpoint</th>
-                    <th>Authorization</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/retry-policies</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Retrieves defined retry policies for the project.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-post">POST</span></td>
-                    <td><code>/api/retry-policies</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Creates a new retry configuration (linear, fixed, exponential).</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/metrics</code></td>
-                    <td>Bearer JWT</td>
-                    <td>Calculates real-time throughput metrics, success percentages, etc.</td>
-                </tr>
-                <tr>
-                    <td><span class="badge badge-get">GET</span></td>
-                    <td><code>/api/live</code></td>
-                    <td>None</td>
-                    <td><strong>SSE stream</strong>: Establishes persistent live event push connection.</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- PAGE 7: API DOCUMENTATION PART 1 -->
+    <div class="page">
+        <div class="page-content-wrapper">
+            <h1>4. API Documentation</h1>
+            <p>
+                All endpoints are exposed under the base path <code>/api</code>. Authenticated endpoints require a Bearer token in the <code>Authorization</code> header (<code>Authorization: Bearer &lt;JWT_TOKEN&gt;</code>).
+            </p>
 
-        <h3>SSE Event Format</h3>
-        <p>
-            The live stream pushes standard events dynamically whenever database mutations happen:
-        </p>
-        <pre><code>data: {
+            <h2>4.1 Authentication Endpoints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Authorization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/auth/register</code></td>
+                        <td>None</td>
+                        <td>Registers a new user and sets up baseline user schemas.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/auth/login</code></td>
+                        <td>None</td>
+                        <td>Authenticates credentials; returns a JSON Web Token (JWT).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/auth/me</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Fetches the profile details of the current authenticated user.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4.2 Projects &amp; Tenant Configuration</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Authorization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/projects</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Lists all projects in the user's organization scope.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/projects</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Creates a new project namespace inside the organization.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4.3 Queue Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Authorization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/queues</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Lists all active task queues.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/queues</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Defines a new queue with explicit concurrency limits and priorities.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-patch">PATCH</span></td>
+                        <td><code>/api/queues/:id</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Updates queue configuration attributes (e.g., toggles <code>is_paused</code>).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- PAGE 8: API DOCUMENTATION PART 2 -->
+    <div class="page">
+        <div class="page-content-wrapper">
+            <h1>4. API Documentation (Continued)</h1>
+
+            <h2>4.4 Jobs &amp; Scheduling Endpoints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Authorization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/jobs</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Queries list of jobs with filters (queue, status, project).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/jobs/:id</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Returns details, historical executions, and log entries of a job.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/jobs</code></td>
+                        <td>Bearer JWT (Rate Limited)</td>
+                        <td>Enqueues a new job immediately or schedules it for the future.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/jobs/batch</code></td>
+                        <td>Bearer JWT (Rate Limited)</td>
+                        <td>Enqueues a collection of jobs grouped under a single batch ID.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/jobs/:id/retry</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Manually forces execution retry for a failed or DLQ job.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/jobs/:id/cancel</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Cancels a pending queued or scheduled recurring execution.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/jobs/:id/ai-summary</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Returns an LLM summary of job failure logs and debugging info.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- PAGE 9: API DOCUMENTATION PART 3 -->
+    <div class="page">
+        <div class="page-content-wrapper">
+            <h1>4. API Documentation (Continued)</h1>
+
+            <h2>4.5 Retry Policies, Metrics, &amp; SSE Live Streams</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Authorization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/retry-policies</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Retrieves defined retry policies for the project.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-post">POST</span></td>
+                        <td><code>/api/retry-policies</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Creates a new retry configuration (linear, fixed, exponential).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/metrics</code></td>
+                        <td>Bearer JWT</td>
+                        <td>Calculates real-time throughput metrics, success percentages, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-get">GET</span></td>
+                        <td><code>/api/live</code></td>
+                        <td>None</td>
+                        <td><strong>SSE stream</strong>: Establishes persistent live event push connection.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4.6 SSE Event Structure</h2>
+            <p>
+                The server triggers client UI state updates dynamically by emitting event buffers. Example event message payload:
+            </p>
+            <pre><code>data: {
   "type": "job_status_change",
   "data": { "jobId": "f29b47e8-c...", "status": "running" },
   "timestamp": 1783321455000
 }</code></pre>
+        </div>
     </div>
 
 
-    <!-- PAGE 7: DESIGN DECISIONS & TRADE-OFFS -->
+    <!-- PAGE 10: DESIGN DECISIONS PART 1 -->
     <div class="page">
-        <h1>5. Design Decisions &amp; Trade-offs</h1>
-        
-        <h2>5.1 SQLite WAL Mode vs. Dedicated Message Brokers</h2>
-        <p>
-            <strong>Decision:</strong> Using SQLite in Write-Ahead Log (WAL) mode as the database engine instead of running PostgreSQL + Redis.
-        </p>
-        <p>
-            <strong>Rationale &amp; Trade-off:</strong> Setting up a heavy Redis/PostgreSQL ecosystem increases operations complexity, deployment overhead, and infrastructure costs. By enabling <code>journal_mode = WAL</code> on SQLite via the <code>better-sqlite3</code> package, the system unlocks concurrent readers alongside a writer, executing thousands of transactions per second on single-file storage. This guarantees relational foreign-key integrity natively. The trade-off is that SQLite runs in-process, meaning the database must reside on a shared file system (like an SSD volume) if multiple server/worker nodes run on different virtual machines. For low-to-medium deployments, it provides exceptional simplicity with zero setup complexity.
-        </p>
+        <div class="page-content-wrapper">
+            <h1>5. Design Decisions &amp; Trade-offs</h1>
+            
+            <h2>5.1 SQLite WAL Mode vs. Dedicated Message Brokers</h2>
+            <p>
+                <strong>Decision:</strong> Using SQLite in Write-Ahead Log (WAL) mode as the database engine instead of running PostgreSQL + Redis.
+            </p>
+            <p>
+                <strong>Rationale &amp; Trade-off:</strong> Setting up a heavy Redis/PostgreSQL ecosystem increases operations complexity, deployment overhead, and infrastructure costs. By enabling <code>journal_mode = WAL</code> on SQLite via the <code>better-sqlite3</code> package, the system unlocks concurrent readers alongside a writer, executing thousands of transactions per second on single-file storage. This guarantees relational foreign-key integrity natively. The trade-off is that SQLite runs in-process, meaning the database must reside on a shared file system (like an SSD volume) if multiple server/worker nodes run on different virtual machines. For low-to-medium deployments, it provides exceptional simplicity with zero setup complexity.
+            </p>
 
-        <h2>5.2 Server-Sent Events (SSE) vs. WebSockets</h2>
-        <p>
-            <strong>Decision:</strong> Using HTTP-based Server-Sent Events (SSE) for the live dashboard event stream instead of bidirectionally-open WebSockets.
-        </p>
-        <p>
-            <strong>Rationale &amp; Trade-off:</strong> WebSockets require full-duplex communication and specialized server-side connection handling, bypassing normal HTTP headers, proxies, and security controls. Because the dashboard client only needs to receive server updates (unidirectional stream) rather than pushing messages back, SSE is a much simpler, robust, and native browser choice. It uses standard HTTP connections, supports automatic reconnection out-of-the-box, and traverses load balancers and firewalls easily.
-        </p>
+            <h2>5.2 Server-Sent Events (SSE) vs. WebSockets</h2>
+            <p>
+                <strong>Decision:</strong> Using HTTP-based Server-Sent Events (SSE) for the live dashboard event stream instead of bidirectionally-open WebSockets.
+            </p>
+            <p>
+                <strong>Rationale &amp; Trade-off:</strong> WebSockets require full-duplex communication and specialized server-side connection handling, bypassing normal HTTP headers, proxies, and security controls. Because the dashboard client only needs to receive server updates (unidirectional stream) rather than pushing messages back, SSE is a much simpler, robust, and native browser choice. It uses standard HTTP connections, supports automatic reconnection out-of-the-box, and traverses load balancers and firewalls easily.
+            </p>
 
-        <h2>5.3 Atomic Database-Level Claims vs. Central Dispatcher</h2>
-        <p>
-            <strong>Decision:</strong> Implementing a pull-based worker polling loop backed by an atomic SQLite transaction instead of a push-based central scheduling thread.
-        </p>
-        <p>
-            <strong>Rationale:</strong> In a central push model, if the main dispatcher server goes down, the entire execution pipeline halts. By implementing a pull-based claim query utilizing SQLite transactions:
-        </p>
-        <pre><code>db.transaction((workerId) => {
+            <h2>5.3 Atomic Database-Level Claims vs. Central Dispatcher</h2>
+            <p>
+                <strong>Decision:</strong> Implementing a pull-based worker polling loop backed by an atomic SQLite transaction instead of a push-based central scheduling thread.
+            </p>
+            <pre><code>db.transaction((workerId) => {
   const job = db.prepare('SELECT ... WHERE status = "queued" ... LIMIT 1').get();
   db.prepare('UPDATE jobs SET status = "claimed" WHERE id = ?').run(job.id);
   return job;
 });</code></pre>
-        <p>
-            We ensure that multiple worker processes can query the database concurrently. SQLite locks the file during the write step, preventing race conditions (no job can ever be claimed by two workers). If a worker crashes mid-execution, other workers detect the lack of heartbeats and recover the job, making the system highly resilient and stateless.
-        </p>
+        </div>
     </div>
 
 
-    <!-- PAGE 8: DESIGN DECISIONS & TRADE-OFFS (CONTINUED) -->
+    <!-- PAGE 11: DESIGN DECISIONS PART 2 -->
     <div class="page">
-        <h1>5. Design Decisions (Continued)</h1>
+        <div class="page-content-wrapper">
+            <h1>5. Design Decisions (Continued)</h1>
 
-        <h2>5.4 Decoupled Retry Policies</h2>
-        <p>
-            <strong>Decision:</strong> Designing retry logic as individual entities (<code>retry_policies</code> table) referenced by queues, rather than hardcoding attempt counters inside the jobs code.
-        </p>
-        <p>
-            <strong>Rationale:</strong> Decoupling retry behaviors allows operators to modify retry configurations globally. For example, updating the delay of the "Linear Backoff" policy instantly changes the behavior of all queues referencing it, without requiring the modification of individual job payloads. The trade-off is one additional table join operation during the job polling step, which has been optimized through indexed lookups.
-        </p>
+            <h2>5.4 Decoupled Retry Policies</h2>
+            <p>
+                <strong>Decision:</strong> Designing retry logic as individual entities (<code>retry_policies</code> table) referenced by queues, rather than hardcoding attempt counters inside the jobs code.
+            </p>
+            <p>
+                <strong>Rationale:</strong> Decoupling retry behaviors allows operators to modify retry configurations globally. For example, updating the delay of the "Linear Backoff" policy instantly changes the behavior of all queues referencing it, without requiring the modification of individual job payloads. The trade-off is one additional table join operation during the job polling step, which has been optimized through indexed lookups.
+            </p>
 
-        <h2>5.5 Directed Acyclic Graph (DAG) Sibling Dependencies</h2>
-        <p>
-            <strong>Decision:</strong> Designing a <code>job_dependencies</code> structure to enforce parent-child relations natively.
-        </p>
-        <p>
-            <strong>Rationale:</strong> Many batch-processing tasks require steps to run in sequence (e.g., step B starts only after step A completes). By validating dependencies inside the claiming query:
-        </p>
-        <pre><code>AND NOT EXISTS (
+            <h2>5.5 Directed Acyclic Graph (DAG) Sibling Dependencies</h2>
+            <p>
+                <strong>Decision:</strong> Designing a <code>job_dependencies</code> structure to enforce parent-child relations natively.
+            </p>
+            <p>
+                <strong>Rationale:</strong> Many batch-processing tasks require steps to run in sequence (e.g., step B starts only after step A completes). By validating dependencies inside the claiming query:
+            </p>
+            <pre><code>AND NOT EXISTS (
   SELECT 1 FROM job_dependencies jd
   JOIN jobs parent ON jd.parent_job_id = parent.id
   WHERE jd.child_job_id = j.id AND parent.status != 'completed'
 )</code></pre>
-        <p>
-            We enforce job dependency logic cleanly at the database level. Child jobs remain in the queue but will not be picked up by any worker node until all parent jobs have transitioned to a <code>completed</code> status.
-        </p>
 
-        <h2>5.6 Dead-Letter Queue (DLQ) vs. Silent Failure</h2>
-        <p>
-            <strong>Decision:</strong> Shifting failing jobs to a <code>dead_letter_queue</code> table rather than discarding them or attempting retries indefinitely.
-        </p>
-        <p>
-            <strong>Rationale:</strong> When a worker script fails repeatedly (due to code syntax, network dropouts, or external API timeouts), retrying indefinitely consumes worker threads and starves other queues. Discarding them silently, on the other hand, leads to untraceable data loss. Moving them to the DLQ isolates the failure, records the exact error details, and lets developers requeue the job manually once the underlying code is fixed.
-        </p>
+            <h2>5.6 Dead-Letter Queue (DLQ) vs. Silent Failure</h2>
+            <p>
+                <strong>Decision:</strong> Shifting failing jobs to a <code>dead_letter_queue</code> table rather than discarding them or attempting retries indefinitely.
+            </p>
+            <p>
+                <strong>Rationale:</strong> When a worker script fails repeatedly, retrying indefinitely consumes worker threads and starves other queues. Discarding them silently leads to untraceable data loss. Moving them to the DLQ isolates the failure, records the exact error details, and lets developers requeue the job manually once the underlying code is fixed.
+            </p>
+        </div>
     </div>
 
 
-    <!-- PAGE 9: TESTING STRATEGY & SOURCE CODE SETUP -->
+    <!-- PAGE 12: TESTING STRATEGY & SETUP -->
     <div class="page">
-        <h1>6. Testing Strategy &amp; Source Code Setup</h1>
-        
-        <h2>6.1 Testing Strategy</h2>
-        <p>
-            Testing is organized around reliability guarantees, ensuring no jobs are duplicated, dropped, or executed in parallel violation of the queue limitations:
-        </p>
-        <ul>
-            <li><strong>Unit Testing</strong>: Focuses on backoff arithmetic calculations (fixed, linear, and exponential offsets), parsing cron strings, and verifying database connection settings.</li>
-            <li><strong>Integration Testing</strong>: Walks jobs through the entire lifecycle (from <code>POST /api/jobs</code> -> worker claim -> status update -> logging details).</li>
-            <li><strong>Concurrency Validation</strong>: Simulates multiple worker clients querying the database at the exact same millisecond, verifying that SQLite's lock transaction prevents duplicate claiming.</li>
-            <li><strong>Dependency Validation</strong>: Asserts that child jobs are blocked until all parents complete, and immediately schedules the child once parent requirements are satisfied.</li>
-        </ul>
+        <div class="page-content-wrapper">
+            <h1>6. Testing Strategy &amp; Source Code Setup</h1>
+            
+            <h2>6.1 Testing Strategy</h2>
+            <p>
+                Testing is organized around reliability guarantees, ensuring no jobs are duplicated, dropped, or executed in parallel violation of the queue limitations:
+            </p>
+            <ul>
+                <li><strong>Unit Testing</strong>: Focuses on backoff arithmetic calculations (fixed, linear, and exponential offsets), parsing cron strings, and verifying database connection settings.</li>
+                <li><strong>Integration Testing</strong>: Walks jobs through the entire lifecycle (from <code>POST /api/jobs</code> -> worker claim -> status update -> logging details).</li>
+                <li><strong>Concurrency Validation</strong>: Simulates multiple worker clients querying the database at the exact same millisecond, verifying that SQLite's lock transaction prevents duplicate claiming.</li>
+                <li><strong>Dependency Validation</strong>: Asserts that child jobs are blocked until all parents complete, and immediately schedules the child once parent requirements are satisfied.</li>
+            </ul>
 
-        <h2>7. Source Code &amp; Setup</h2>
-        <h3>7.1 Prerequisites</h3>
-        <ul>
-            <li><strong>Node.js</strong>: Version 18.x or higher</li>
-            <li><strong>npm</strong>: Version 9.x or higher</li>
-            <li><strong>SQLite3</strong>: Native engine, automatically compiled on startup via <code>better-sqlite3</code></li>
-        </ul>
+            <h2>7. Source Code &amp; Setup</h2>
+            
+            <h3>7.1 Prerequisites</h3>
+            <ul>
+                <li><strong>Node.js</strong>: Version 18.x or higher</li>
+                <li><strong>npm</strong>: Version 9.x or higher</li>
+                <li><strong>SQLite3</strong>: Native engine, automatically compiled on startup via <code>better-sqlite3</code></li>
+            </ul>
 
-        <h3>7.2 Dependencies Installation</h3>
-        <p>To compile the project dependencies recursively, execute the root package.json command:</p>
-        <pre><code>npm run install-all</code></pre>
-        <p>This recursively installs dependencies across the root workspace, the Express API backend, the worker daemon, and the Vite frontend.</p>
+            <h3>7.2 Dependencies Installation</h3>
+            <p>To compile the project dependencies recursively, execute the root package.json command:</p>
+            <pre><code>npm run install-all</code></pre>
+        </div>
+    </div>
 
-        <h3>7.3 Running the Services</h3>
-        <p><strong>A. Run Concurrently (Recommended):</strong></p>
-        <pre><code>npm run dev</code></pre>
-        <p>This starts all services together. Output logs are multiplexed in your terminal:</p>
-        <ul>
-            <li><strong>Express Server API</strong>: <a href="http://localhost:3001" target="_blank">http://localhost:3001</a></li>
-            <li><strong>React Live Dashboard</strong>: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></li>
-            <li><strong>Worker process</strong>: Bootstrapped and listening to SQLite.</li>
-        </ul>
 
-        <p><strong>B. Running Services Separately:</strong></p>
-        <pre><code># Start the Express API Server only
+    <!-- PAGE 13: SOURCE CODE SETUP PART 2 -->
+    <div class="page">
+        <div class="page-content-wrapper">
+            <h1>7. Source Code Setup (Continued)</h1>
+
+            <h2>7.3 Running the Services</h2>
+            <p><strong>A. Run Concurrently (Recommended):</strong></p>
+            <pre><code>npm run dev</code></pre>
+            <p>This starts all services together. Output logs are multiplexed in your terminal:</p>
+            <ul>
+                <li><strong>Express Server API</strong>: <a href="http://localhost:3001" target="_blank">http://localhost:3001</a></li>
+                <li><strong>React Live Dashboard</strong>: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></li>
+                <li><strong>Worker process</strong>: Bootstrapped and listening to SQLite.</li>
+            </ul>
+
+            <p><strong>B. Running Services Separately:</strong></p>
+            <p>If you prefer to run services in dedicated terminal tabs:</p>
+            <pre><code># Start the Express API Server only
 npm run dev:backend
 
 # Start the Background Worker process only
@@ -914,21 +981,22 @@ npm run dev:worker
 # Start the Vite React Dashboard client only
 npm run dev:frontend</code></pre>
 
-        <h3>7.4 Executing the Test Suite</h3>
-        <p>To run the native automated testing suite:</p>
-        <pre><code>npm run test</code></pre>
+            <h2>7.4 Executing the Test Suite</h2>
+            <p>To run the native automated testing suite:</p>
+            <pre><code>npm run test</code></pre>
+        </div>
     </div>
 
 
-    <!-- PAGE 10: CONCLUSION -->
+    <!-- PAGE 14: CONCLUSION -->
     <div class="page">
-        <h1>8. Conclusion</h1>
-        <p>
-            The <strong>Distributed Job Scheduler</strong> delivers a highly optimized, light-footprint scheduling platform. By moving key execution validation (concurrency checks, dependency constraints, and atomic claiming) directly into SQLite SQL transactions, the project achieves a high degree of horizontal worker scalability with zero external broker setup overhead. It coordinates data states reliably and observably across the entire distributed system.
-        </p>
+        <div class="page-content-wrapper">
+            <h1>8. Conclusion</h1>
+            <p>
+                The <strong>Distributed Job Scheduler</strong> delivers a highly optimized, light-footprint scheduling platform. By moving key execution validation (concurrency checks, dependency constraints, and atomic claiming) directly into SQLite SQL transactions, the project achieves a high degree of horizontal worker scalability with zero external broker setup overhead. It coordinates data states reliably and observably across the entire distributed system.
+            </p>
 
-        <div style="margin-top: 30px;">
-            <h3>Architecture Performance Characteristics</h3>
+            <h3>8.1 Architecture Performance Characteristics</h3>
             <table>
                 <thead>
                     <tr>
@@ -960,12 +1028,12 @@ npm run dev:frontend</code></pre>
                     </tr>
                 </tbody>
             </table>
-        </div>
 
-        <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px; font-size: 9.5pt; text-align: center; color: var(--text-light);">
-            Distributed Job Scheduler - Technical Design &amp; Architecture Documentation © 2026.
-            <br>
-            Developed by <strong>Anush Loknath (RA2311056010185)</strong>
+            <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); font-size: 9pt; text-align: center; color: var(--text-light);">
+                Distributed Job Scheduler - Technical Design &amp; Architecture Documentation © 2026.
+                <br>
+                Developed by <strong>Anush Loknath (RA2311056010185)</strong>
+            </div>
         </div>
     </div>
 
