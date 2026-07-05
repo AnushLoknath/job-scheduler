@@ -1,0 +1,16 @@
+{
+  "name": "codity-job-scheduler-backend",
+  "version": "1.0.0",
+  "description": "Backend API service for distributed job scheduler",
+  "private": true,
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.8.0",
+    "cors": "^2.8.5",
+    "cron-parser": "^4.9.0",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  }
+}

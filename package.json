@@ -1,0 +1,17 @@
+{
+  "name": "codity-job-scheduler",
+  "version": "1.0.0",
+  "description": "Distributed job scheduling platform with real-time dashboard",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix worker && npm install --prefix frontend",
+    "dev:backend": "node backend/server.js",
+    "dev:worker": "node worker/worker.js",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:worker\" \"npm run dev:frontend\"",
+    "test": "node --test backend/test/**/*.test.js"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

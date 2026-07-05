@@ -1,0 +1,12 @@
+{
+  "name": "codity-job-scheduler-worker",
+  "version": "1.0.0",
+  "description": "Worker service for distributed job scheduler",
+  "private": true,
+  "main": "worker.js",
+  "dependencies": {
+    "better-sqlite3": "^11.8.0",
+    "cron-parser": "^4.9.0",
+    "uuid": "^9.0.1"
+  }
+}
