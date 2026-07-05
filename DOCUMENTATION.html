@@ -149,26 +149,26 @@
             font-size: 18pt;
             border-bottom: 2px solid var(--primary);
             padding-bottom: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         h2 {
-            font-size: 13pt;
+            font-size: 12pt;
             color: var(--secondary);
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 15px;
+            margin-bottom: 8px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 4px;
         }
 
         h3 {
-            font-size: 11pt;
-            margin-top: 15px;
+            font-size: 10.5pt;
+            margin-top: 12px;
             margin-bottom: 6px;
         }
 
         p, li {
-            font-size: 10pt;
+            font-size: 9.5pt;
             color: var(--text-main);
             text-align: justify;
             margin-top: 0;
@@ -177,27 +177,27 @@
 
         ul, ol {
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             padding-left: 20px;
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0 15px 0;
-            font-size: 9pt;
+            margin: 10px auto 12px auto;
+            font-size: 8.5pt;
             page-break-inside: avoid;
             break-inside: avoid;
         }
 
         th, td {
             border: 1px solid var(--border);
-            padding: 6px 10px;
+            padding: 5px 8px;
             text-align: left;
             vertical-align: middle;
         }
@@ -215,10 +215,10 @@
         /* Badges */
         .badge {
             display: inline-block;
-            padding: 1px 5px;
-            font-size: 7.5pt;
+            padding: 1px 4px;
+            font-size: 7pt;
             font-weight: 600;
-            border-radius: 4px;
+            border-radius: 3px;
             text-transform: uppercase;
         }
 
@@ -233,9 +233,9 @@
         /* Code blocks */
         code {
             font-family: 'Fira Code', monospace;
-            font-size: 8.5pt;
+            font-size: 8pt;
             background-color: var(--code-bg) !important;
-            padding: 1px 3px;
+            padding: 1px 2px;
             border-radius: 3px;
         }
 
@@ -243,10 +243,11 @@
             background-color: var(--bg-light) !important;
             border: 1px solid var(--border);
             border-left: 4px solid var(--secondary);
-            padding: 10px;
+            padding: 8px;
             overflow: hidden;
             border-radius: 4px;
-            margin: 10px 0;
+            margin: 10px auto !important;
+            max-width: 100%;
             page-break-inside: avoid;
             break-inside: avoid;
         }
@@ -254,7 +255,7 @@
         pre code {
             background-color: transparent !important;
             padding: 0;
-            font-size: 8pt;
+            font-size: 7.5pt;
         }
 
         /* SVG Architecture layout */
@@ -262,13 +263,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 15px 0;
+            margin: 12px auto;
             background-color: var(--bg-light) !important;
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 12px;
+            padding: 10px;
             page-break-inside: avoid;
             break-inside: avoid;
+        }
+
+        .figure-caption {
+            font-size: 8pt;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 4px;
+            margin-bottom: 12px;
         }
 
         /* Print Button Floating (UI Only) */
@@ -420,51 +430,122 @@
             </p>
             
             <div class="diagram-container">
-                <svg width="580" height="230" viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border-radius: 4px;">
-                    <!-- Layers -->
-                    <rect x="10" y="10" width="160" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                    <text x="90" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">FRONTEND LAYER</text>
+                <!-- Enterprise System Architecture SVG -->
+                <svg width="580" height="220" viewBox="0 0 600 230" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border-radius: 4px;">
+                    <!-- Definitions for arrow markers -->
+                    <defs>
+                        <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284C7" />
+                        </marker>
+                        <marker id="arrow-teal" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0F766E" />
+                        </marker>
+                        <marker id="arrow-navy" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1E3A8A" />
+                        </marker>
+                    </defs>
 
-                    <rect x="190" y="10" width="200" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                    <text x="290" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">API & RUNTIME LAYER</text>
+                    <!-- Client Layer -->
+                    <rect x="15" y="15" width="145" height="200" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                    <rect x="15" y="15" width="145" height="22" rx="6" fill="#0284C7" />
+                    <text x="87.5" y="29" font-size="8.5" fill="#ffffff" font-weight="bold" text-anchor="middle">CLIENT / PRESENTATION</text>
+                    
+                    <g transform="translate(25, 48)">
+                        <!-- UI Elements representation -->
+                        <rect x="0" y="0" width="125" height="155" rx="3" fill="#ffffff" stroke="#E2E8F0" />
+                        <rect x="5" y="5" width="115" height="25" rx="2" fill="#F0F9FF" stroke="#BAE6FD" />
+                        <text x="12" y="20" font-size="8" fill="#0369A1" font-weight="600">Vite React App</text>
+                        
+                        <rect x="5" y="38" width="52" height="50" rx="2" fill="#F8FAFC" stroke="#E2E8F0" />
+                        <text x="10" y="50" font-size="7" fill="#64748B" font-weight="bold">TELEMETRY</text>
+                        <text x="10" y="62" font-size="6.5" fill="#374151">Live Charts</text>
+                        <text x="10" y="72" font-size="6.5" fill="#374151">Worker Load</text>
+                        <text x="10" y="82" font-size="6.5" fill="#374151">Queue Depth</text>
 
-                    <rect x="410" y="10" width="180" height="220" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
-                    <text x="500" y="25" font-size="10" fill="#64748B" font-weight="600" text-anchor="middle">STORAGE LAYER</text>
+                        <rect x="68" y="38" width="52" height="50" rx="2" fill="#F8FAFC" stroke="#E2E8F0" />
+                        <text x="73" y="50" font-size="7" fill="#64748B" font-weight="bold">EXPLORER</text>
+                        <text x="73" y="62" font-size="6.5" fill="#374151">Job Logs</text>
+                        <text x="73" y="72" font-size="6.5" fill="#374151">Retry Config</text>
+                        <text x="73" y="82" font-size="6.5" fill="#374151">Queue Control</text>
 
-                    <!-- Components -->
-                    <rect x="25" y="70" width="130" height="100" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" />
-                    <text x="90" y="105" font-size="11" fill="#0369A1" font-weight="bold" text-anchor="middle">Vite React</text>
-                    <text x="90" y="125" font-size="9" fill="#0369A1" text-anchor="middle">Monitoring Dashboard</text>
-                    <text x="90" y="140" font-size="8" fill="#64748B" text-anchor="middle">(Live Charts & Logs)</text>
+                        <rect x="5" y="98" width="115" height="50" rx="2" fill="#F8FAFC" stroke="#E2E8F0" />
+                        <text x="10" y="110" font-size="7" fill="#64748B" font-weight="bold">SSE LOG MONITOR</text>
+                        <text x="10" y="122" font-size="6.5" fill="#374151">Persistent connection parses live event</text>
+                        <text x="10" y="132" font-size="6.5" fill="#374151">buffer payloads on status change.</text>
+                    </g>
 
-                    <rect x="205" y="45" width="170" height="70" rx="4" fill="#EEF2F6" stroke="#1E3A8A" stroke-width="1.5" />
-                    <text x="290" y="72" font-size="11" fill="#1E3A8A" font-weight="bold" text-anchor="middle">Express API Server</text>
-                    <text x="290" y="90" font-size="8.5" fill="#374151" text-anchor="middle">REST APIs + SSE Broadcaster</text>
+                    <!-- API / Runtime Gateway Layer -->
+                    <rect x="215" y="15" width="170" height="200" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                    <rect x="215" y="15" width="170" height="22" rx="6" fill="#1E3A8A" />
+                    <text x="300" y="29" font-size="8.5" fill="#ffffff" font-weight="bold" text-anchor="middle">EXPRESS API GATEWAY</text>
 
-                    <rect x="205" y="145" width="170" height="75" rx="4" fill="#E2F2F0" stroke="#0F766E" stroke-width="1.5" />
-                    <text x="290" y="168" font-size="11" fill="#0F766E" font-weight="bold" text-anchor="middle">Worker Daemon Pool</text>
-                    <text x="290" y="185" font-size="8.5" fill="#374151" text-anchor="middle">Concurrency Claim Loop</text>
-                    <text x="290" y="200" font-size="8" fill="#64748B" text-anchor="middle">(5 concurrent slots per node)</text>
+                    <g transform="translate(225, 48)">
+                        <rect x="0" y="0" width="150" height="155" rx="3" fill="#ffffff" stroke="#E2E8F0" />
+                        
+                        <!-- Route Routers -->
+                        <rect x="5" y="8" width="140" height="22" rx="2" fill="#F1F5F9" stroke="#E2E8F0" />
+                        <text x="10" y="22" font-size="7.5" fill="#334155" font-weight="600">Auth &amp; RBAC Middleware (JWT)</text>
+                        
+                        <rect x="5" y="36" width="140" height="22" rx="2" fill="#F1F5F9" stroke="#E2E8F0" />
+                        <text x="10" y="50" font-size="7.5" fill="#334155" font-weight="600">Token-Bucket Rate Limiter (30/m)</text>
 
-                    <rect x="430" y="70" width="140" height="100" rx="4" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.5" />
-                    <text x="500" y="105" font-size="11" fill="#B91C1C" font-weight="bold" text-anchor="middle">SQLite WAL DB</text>
-                    <text x="500" y="125" font-size="8.5" fill="#374151" text-anchor="middle">(database.sqlite)</text>
-                    <text x="500" y="140" font-size="8" fill="#64748B" text-anchor="middle">Atomic Locking & States</text>
+                        <rect x="5" y="64" width="140" height="50" rx="2" fill="#F8FAFC" stroke="#E2E8F0" />
+                        <text x="10" y="75" font-size="7" fill="#64748B" font-weight="bold">API CONTROLLERS</text>
+                        <text x="15" y="88" font-size="7.5" fill="#1E3A8A" font-weight="600">/jobs · /queues · /retry-policies</text>
+                        <text x="15" y="100" font-size="7.5" fill="#1E3A8A" font-weight="600">/metrics · /projects</text>
 
-                    <!-- Connection Lines -->
-                    <path d="M 155 90 L 205 90" stroke="#0284C7" stroke-width="1" fill="none" />
-                    <text x="180" y="85" font-size="7" fill="#0284C7" text-anchor="middle">REST</text>
+                        <!-- SSE Broadcaster -->
+                        <rect x="5" y="120" width="140" height="28" rx="2" fill="#ECFDF5" stroke="#A7F3D0" />
+                        <text x="10" y="132" font-size="7.5" fill="#065F46" font-weight="bold">SSE Broadcaster (/api/live)</text>
+                        <text x="10" y="142" font-size="6.5" fill="#047857">Pushes data events downstream to UI</text>
+                    </g>
 
-                    <path d="M 205 105 L 155 105" stroke="#0F766E" stroke-width="1" fill="none" />
-                    <text x="180" y="115" font-size="7" fill="#0F766E" text-anchor="middle">SSE Stream</text>
+                    <!-- Storage Layer -->
+                    <rect x="440" y="15" width="145" height="90" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                    <rect x="440" y="15" width="145" height="22" rx="6" fill="#B91C1C" />
+                    <text x="512.5" y="29" font-size="8.5" fill="#ffffff" font-weight="bold" text-anchor="middle">SQLITE STORAGE</text>
 
-                    <path d="M 375 80 L 430 95" stroke="#1E3A8A" stroke-width="1" fill="none" />
-                    <text x="402" y="83" font-size="7" fill="#1E3A8A" text-anchor="middle">Read/Write</text>
+                    <g transform="translate(450, 48)">
+                        <rect x="0" y="0" width="125" height="47" rx="3" fill="#ffffff" stroke="#E2E8F0" />
+                        <text x="8" y="15" font-size="8" fill="#1E293B" font-weight="bold">database.sqlite</text>
+                        <text x="8" y="27" font-size="7" fill="#64748B">Write-Ahead Log (WAL)</text>
+                        <text x="8" y="38" font-size="7" fill="#B91C1C" font-weight="bold">Single-Source-of-Truth</text>
+                    </g>
 
-                    <path d="M 375 180 L 430 145" stroke="#0F766E" stroke-width="1" fill="none" />
-                    <text x="402" y="170" font-size="7" fill="#0F766E" text-anchor="middle">Atomic Claims</text>
+                    <!-- Worker Layer -->
+                    <rect x="440" y="115" width="145" height="100" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                    <rect x="440" y="115" width="145" height="22" rx="6" fill="#0F766E" />
+                    <text x="512.5" y="129" font-size="8.5" fill="#ffffff" font-weight="bold" text-anchor="middle">BACKGROUND WORKERS</text>
+
+                    <g transform="translate(450, 145)">
+                        <rect x="0" y="0" width="125" height="60" rx="3" fill="#ffffff" stroke="#E2E8F0" />
+                        <text x="8" y="15" font-size="8" fill="#0F766E" font-weight="bold">Worker Pool Nodes</text>
+                        <text x="8" y="27" font-size="7" fill="#374151">Infinite claim-execute loop</text>
+                        <text x="8" y="39" font-size="7" fill="#64748B">Concurrency limit: 5/node</text>
+                        <text x="8" y="50" font-size="7.5" fill="#0F766E" font-weight="600">Atomic Claims &amp; Heartbeats</text>
+                    </g>
+
+                    <!-- Connector Paths & Labels -->
+                    <!-- React UI -> Express REST (HTTPS POST/GET) -->
+                    <path d="M 160 85 L 215 85" stroke="#0284C7" stroke-width="1.5" fill="none" marker-end="url(#arrow-blue)" />
+                    <text x="187.5" y="80" font-size="7.5" fill="#0284C7" font-weight="bold" text-anchor="middle">REST HTTP</text>
+
+                    <!-- Express SSE Broadcast -> React UI (Event Stream) -->
+                    <path d="M 215 178 L 160 178" stroke="#047857" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)" />
+                    <text x="187.5" y="173" font-size="7.5" fill="#047857" font-weight="bold" text-anchor="middle">SSE Stream</text>
+
+                    <!-- Express -> SQLite WAL (Read/Write States) -->
+                    <path d="M 385 60 L 440 60" stroke="#1E3A8A" stroke-width="1.5" fill="none" marker-end="url(#arrow-navy)" />
+                    <text x="412.5" y="55" font-size="7" fill="#1E3A8A" font-weight="bold" text-anchor="middle">Write State</text>
+
+                    <!-- Workers <-> SQLite WAL (Atomic Claim Loop & Logging) -->
+                    <path d="M 465 145 L 465 105" stroke="#0F766E" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)" />
+                    <path d="M 505 105 L 505 145" stroke="#0F766E" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)" />
+                    <text x="445" y="130" font-size="7" fill="#0F766E" font-weight="bold">Claim</text>
+                    <text x="525" y="130" font-size="7" fill="#0F766E" font-weight="bold">Log/HB</text>
                 </svg>
             </div>
+            <div class="figure-caption">Figure 1 — Distributed Job Scheduler enterprise architecture diagram</div>
 
             <h2>2.1 Data &amp; Dispatch Flow</h2>
             <p>
@@ -500,7 +581,7 @@
     </div>
 
 
-    <!-- PAGE 5: DATABASE DESIGN PART 1 -->
+    <!-- PAGE 5: DATABASE DESIGN LAYOUT -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>3. Database Design — Schema Layout</h1>
@@ -508,7 +589,228 @@
                 The system relies on a fully normalized SQLite schema structure. Concurrency and consistency are guaranteed through foreign keys and WAL mode. The schema is organized into tenant, configuration, and execution layers.
             </p>
 
-            <h2>3.1 Core Tenant &amp; Configuration Tables</h2>
+            <div class="diagram-container">
+                <!-- Enterprise Database ERD SVG Diagram -->
+                <svg width="580" height="330" viewBox="0 0 580 330" fill="none" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border-radius: 4px;">
+                    <!-- Definitions for relationships endpoints -->
+                    <defs>
+                        <marker id="circle-end" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+                            <circle cx="5" cy="5" r="3" fill="#64748B" />
+                        </marker>
+                    </defs>
+
+                    <!-- Table Groups & Positioning -->
+                    <!-- ROW 1: Tenant Core (y = 15) -->
+                    <!-- users -->
+                    <g transform="translate(15, 15)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">users</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#374151" font-size="6.5">username</text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">email</text>
+                    </g>
+                    
+                    <!-- organization_members -->
+                    <g transform="translate(125, 15)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">org_members</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">user_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#0F766E" font-size="6.5" font-weight="bold">org_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                    </g>
+
+                    <!-- organizations -->
+                    <g transform="translate(240, 15)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">organizations</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#374151" font-size="6.5">name</text>
+                    </g>
+
+                    <!-- projects -->
+                    <g transform="translate(350, 15)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">projects</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">org_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">name</text>
+                    </g>
+
+                    <!-- batches -->
+                    <g transform="translate(465, 15)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">batches</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">project_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">name</text>
+                    </g>
+
+                    <!-- ROW 2: Configuration & Queue Rules (y = 100) -->
+                    <!-- retry_policies -->
+                    <g transform="translate(15, 100)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">retry_policies</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">project_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">strategy</text>
+                    </g>
+
+                    <!-- queues -->
+                    <g transform="translate(125, 100)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">queues</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">project_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#0F766E" font-size="6.5" font-weight="bold">retry_pol_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                    </g>
+
+                    <!-- jobs -->
+                    <g transform="translate(240, 100)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">jobs</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">queue_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">status</text>
+                    </g>
+
+                    <!-- workers -->
+                    <g transform="translate(350, 100)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">workers</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#374151" font-size="6.5">hostname</text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">status</text>
+                    </g>
+
+                    <!-- worker_heartbeats -->
+                    <g transform="translate(465, 100)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">worker_heartbeats</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">worker_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">timestamp</text>
+                    </g>
+
+                    <!-- ROW 3: Logging & History (y = 185) -->
+                    <!-- dead_letter_queue -->
+                    <g transform="translate(15, 185)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">dead_letter_queue</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">queue_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">error_msg</text>
+                    </g>
+
+                    <!-- job_executions -->
+                    <g transform="translate(125, 185)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">job_executions</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">job_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">duration_ms</text>
+                    </g>
+
+                    <!-- job_dependencies -->
+                    <g transform="translate(240, 185)">
+                        <rect width="95" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">job_dependencies</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">parent_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#0F766E" font-size="6.5" font-weight="bold">child_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                    </g>
+
+                    <!-- job_logs -->
+                    <g transform="translate(350, 185)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">job_logs</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">job_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">level</text>
+                    </g>
+
+                    <!-- scheduled_jobs -->
+                    <g transform="translate(465, 185)">
+                        <rect width="100" height="55" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="100" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="50" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">scheduled_jobs</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">id <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#0F766E" font-size="6.5" font-weight="bold">job_id <tspan fill="#64748B" font-weight="normal">[FK]</tspan></text>
+                        <text x="6" y="47" fill="#374151" font-size="6.5">run_at</text>
+                    </g>
+
+                    <!-- ROW 4: Distributed Locks / Metadata (y = 270) -->
+                    <!-- distributed_locks -->
+                    <g transform="translate(240, 270)">
+                        <rect width="95" height="50" rx="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="1"/>
+                        <rect width="95" height="15" rx="3" fill="#1E3A8A"/>
+                        <text x="47.5" y="11" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle">distributed_locks</text>
+                        <text x="6" y="27" fill="#1E3A8A" font-size="6.5" font-weight="bold">key <tspan fill="#64748B" font-weight="normal">[PK]</tspan></text>
+                        <text x="6" y="37" fill="#374151" font-size="6.5">holder</text>
+                        <text x="6" y="45" fill="#374151" font-size="6.5">expires_at</text>
+                    </g>
+
+                    <!-- Relationships Links -->
+                    <!-- users to org_members -->
+                    <path d="M 110 42 L 125 42" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- organizations to org_members -->
+                    <path d="M 240 42 L 225 42" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- organizations to projects -->
+                    <path d="M 335 42 L 350 42" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- projects to batches -->
+                    <path d="M 450 42 L 465 42" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+
+                    <!-- projects to retry_policies -->
+                    <path d="M 350 50 L 340 50 L 340 85 L 62 85 L 62 100" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                    <!-- projects to queues -->
+                    <path d="M 350 50 L 340 50 L 340 85 L 175 85 L 175 100" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+
+                    <!-- retry_policies to queues -->
+                    <path d="M 110 127 L 125 127" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- queues to jobs -->
+                    <path d="M 225 127 L 240 127" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- jobs to workers -->
+                    <path d="M 335 127 L 350 127" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+                    <!-- workers to heartbeats -->
+                    <path d="M 450 127 L 465 127" stroke="#94A3B8" stroke-width="1" marker-end="url(#circle-end)" />
+
+                    <!-- queues to dead_letter_queue -->
+                    <path d="M 175 155 L 175 170 L 62 170 L 62 185" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                    <!-- jobs to executions -->
+                    <path d="M 287 155 L 287 170 L 175 170 L 175 185" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                    <!-- jobs to dependencies -->
+                    <path d="M 287 155 L 287 185" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                    <!-- jobs to logs -->
+                    <path d="M 287 155 L 287 170 L 400 170 L 400 185" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                    <!-- jobs to scheduled_jobs -->
+                    <path d="M 287 155 L 287 170 L 515 170 L 515 185" stroke="#94A3B8" stroke-width="1" fill="none" marker-end="url(#circle-end)" />
+                </svg>
+            </div>
+            <div class="figure-caption">Figure 2 — Database Entity Relationship Diagram (ERD)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 6: DATABASE SCHEMAS PART 1 -->
+    <div class="page">
+        <div class="page-content-wrapper">
+            <h1>3.1 Core Tenant &amp; Configuration Tables</h1>
+            <p>
+                The following tables define the multi-tenant architecture and execution configs. These boundary configurations are read frequently but updated administrative only.
+            </p>
             <table>
                 <thead>
                     <tr>
@@ -567,12 +869,13 @@
     </div>
 
 
-    <!-- PAGE 6: DATABASE DESIGN PART 2 -->
+    <!-- PAGE 7: DATABASE SCHEMAS PART 2 -->
     <div class="page">
         <div class="page-content-wrapper">
-            <h1>3. Database Design (Continued)</h1>
-            
-            <h2>3.2 Runtime &amp; Telemetry Tables</h2>
+            <h1>3.2 Runtime &amp; Telemetry Tables</h1>
+            <p>
+                The execution layer maintains the dynamic state of active daemons, locks, logs, and executions. These tables support high write volumes during production processing loops.
+            </p>
             <table>
                 <thead>
                     <tr>
@@ -631,7 +934,7 @@
     </div>
 
 
-    <!-- PAGE 7: API DOCUMENTATION PART 1 -->
+    <!-- PAGE 8: API DOCUMENTATION PART 1 -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>4. API Documentation</h1>
@@ -732,7 +1035,7 @@
     </div>
 
 
-    <!-- PAGE 8: API DOCUMENTATION PART 2 -->
+    <!-- PAGE 9: API DOCUMENTATION PART 2 -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>4. API Documentation (Continued)</h1>
@@ -796,7 +1099,7 @@
     </div>
 
 
-    <!-- PAGE 9: API DOCUMENTATION PART 3 -->
+    <!-- PAGE 10: API DOCUMENTATION PART 3 -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>4. API Documentation (Continued)</h1>
@@ -852,7 +1155,7 @@
     </div>
 
 
-    <!-- PAGE 10: DESIGN DECISIONS PART 1 -->
+    <!-- PAGE 11: DESIGN DECISIONS PART 1 -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>5. Design Decisions &amp; Trade-offs</h1>
@@ -886,7 +1189,7 @@
     </div>
 
 
-    <!-- PAGE 11: DESIGN DECISIONS PART 2 -->
+    <!-- PAGE 12: DESIGN DECISIONS PART 2 -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>5. Design Decisions (Continued)</h1>
@@ -923,7 +1226,7 @@
     </div>
 
 
-    <!-- PAGE 12: TESTING STRATEGY & SETUP -->
+    <!-- PAGE 13: TESTING STRATEGY & SETUP -->
     <div class="page">
         <div class="page-content-wrapper">
             <h1>6. Testing Strategy &amp; Source Code Setup</h1>
@@ -955,42 +1258,27 @@
     </div>
 
 
-    <!-- PAGE 13: SOURCE CODE SETUP PART 2 -->
+    <!-- PAGE 14: RUNNING SERVICES & CONCLUSION -->
     <div class="page">
         <div class="page-content-wrapper">
-            <h1>7. Source Code Setup (Continued)</h1>
-
-            <h2>7.3 Running the Services</h2>
+            <h1>7.3 Running the Services &amp; Executing Tests</h1>
             <p><strong>A. Run Concurrently (Recommended):</strong></p>
             <pre><code>npm run dev</code></pre>
-            <p>This starts all services together. Output logs are multiplexed in your terminal:</p>
+            <p>This starts the Express server, background worker, and React dashboard concurrently.</p>
             <ul>
                 <li><strong>Express Server API</strong>: <a href="http://localhost:3001" target="_blank">http://localhost:3001</a></li>
                 <li><strong>React Live Dashboard</strong>: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></li>
-                <li><strong>Worker process</strong>: Bootstrapped and listening to SQLite.</li>
             </ul>
 
-            <p><strong>B. Running Services Separately:</strong></p>
-            <p>If you prefer to run services in dedicated terminal tabs:</p>
-            <pre><code># Start the Express API Server only
+            <p><strong>B. Running Services Separately / Running Tests:</strong></p>
+            <pre><code># Run Backend API / Background Worker / Vite UI in separate tabs
 npm run dev:backend
-
-# Start the Background Worker process only
 npm run dev:worker
+npm run dev:frontend
 
-# Start the Vite React Dashboard client only
-npm run dev:frontend</code></pre>
+# Execute automated tests suite
+npm run test</code></pre>
 
-            <h2>7.4 Executing the Test Suite</h2>
-            <p>To run the native automated testing suite:</p>
-            <pre><code>npm run test</code></pre>
-        </div>
-    </div>
-
-
-    <!-- PAGE 14: CONCLUSION -->
-    <div class="page">
-        <div class="page-content-wrapper">
             <h1>8. Conclusion</h1>
             <p>
                 The <strong>Distributed Job Scheduler</strong> delivers a highly optimized, light-footprint scheduling platform. By moving key execution validation (concurrency checks, dependency constraints, and atomic claiming) directly into SQLite SQL transactions, the project achieves a high degree of horizontal worker scalability with zero external broker setup overhead. It coordinates data states reliably and observably across the entire distributed system.
@@ -1029,7 +1317,7 @@ npm run dev:frontend</code></pre>
                 </tbody>
             </table>
 
-            <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); font-size: 9pt; text-align: center; color: var(--text-light);">
+            <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); font-size: 8.5pt; text-align: center; color: var(--text-light);">
                 Distributed Job Scheduler - Technical Design &amp; Architecture Documentation © 2026.
                 <br>
                 Developed by <strong>Anush Loknath (RA2311056010185)</strong>
